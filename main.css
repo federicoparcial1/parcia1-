@@ -1,0 +1,479 @@
+/* ============================================================
+   VARIABLES CSS — :root
+   ============================================================ */
+:root {
+  /* Fondos */
+  --color-bg:           #12131A;
+  --color-surface:      #1C1F2A;
+  --color-border:       #2A2D3A;
+
+  /* Texto */
+  --color-text:         #F2F2F7;
+  --color-text-muted:   #B4B7C9;
+
+  /* Cards */
+  --color-violet:       #C084FC;
+  --color-violet-dark:  #9333EA;
+  --color-orange:       #F59E0B;
+  --color-orange-dark:  #D97706;
+  --color-coral:        #F97316;
+  --color-coral-dark:   #EA580C;
+
+  /* Barras density */
+  --color-bar:          #A855F7;
+
+  /* Espaciados */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   40px;
+  --space-2xl:  56px;
+
+  /* Bordes */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  20px;
+
+  /* Sombras */
+  --shadow-card:  0 2px 20px rgba(0,0,0,0.4);
+  --shadow-focus: 0 0 0 3px rgba(192,132,252,0.4);
+
+  /* Tipografía */
+  --font: 'DM Sans', sans-serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+
+  /* Textura de fondo: puntos sutiles igual que la imagen */
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header__logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header__logo-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.header__settings {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header__settings:hover {
+  color: var(--color-text);
+  background: var(--color-border);
+}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  text-align: center;
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.hero__title {
+  font-size: clamp(2.4rem, 7vw, 3.25rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+/* ============================================================
+   TEXTAREA + CONTROLES
+   ============================================================ */
+.editor-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.editor__textarea {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  padding: var(--space-lg);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.editor__textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.editor__textarea:focus {
+  border-color: var(--color-violet);
+  box-shadow: var(--shadow-focus);
+}
+
+/* CONTROLES */
+.editor__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.editor__controls-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* Custom checkboxes */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 3px;
+  background: transparent;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background: var(--color-violet);
+  border-color: var(--color-violet);
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 8px;
+  border: 1.5px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+.checkbox-label:hover .checkbox-custom {
+  border-color: var(--color-violet);
+}
+
+.checkbox-text {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.checkbox-label:hover .checkbox-text {
+  color: var(--color-text);
+}
+
+/* Reading time */
+.reading-time {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   METRIC CARDS
+   ============================================================ */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.card {
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  min-height: 110px;
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+}
+
+/* Colores de fondo por tipo */
+.card--violet { background-color: var(--color-violet); }
+.card--orange { background-color: var(--color-orange); }
+.card--coral  { background-color: var(--color-coral); }
+
+/* Contenido de la card */
+.card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card__number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #1a1a2e;
+}
+
+.card__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(20, 10, 40, 0.75);
+}
+
+/* Patrón geométrico decorativo (esquinas derechas de las cards) */
+.card__pattern {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+  opacity: 0.25;
+}
+
+.card__pattern-grid {
+  width: 80px;
+  height: 80px;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.3) 1px, transparent 1px);
+  background-size: 16px 16px;
+  transform: rotate(0deg);
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   LETTER DENSITY
+   ============================================================ */
+.density {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.density__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.density__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.density__row {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.density__letter {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+/* Barra de progreso — técnica: div track + div fill */
+.density__bar-track {
+  height: 10px;
+  background-color: var(--color-surface);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.density__bar-fill {
+  height: 100%;
+  background-color: var(--color-bar);
+  border-radius: 999px;
+}
+
+.density__stats {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.density__percent {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* "See more" */
+.density__see-more {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0;
+  width: fit-content;
+  transition: color 0.2s;
+}
+
+.density__see-more:hover {
+  color: var(--color-text);
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET 600px
+   ============================================================ */
+@media (max-width: 600px) {
+  .main {
+    padding: var(--space-md) var(--space-md) var(--space-xl);
+  }
+
+  .header {
+    padding: var(--space-md);
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .density__row {
+    grid-template-columns: 16px 1fr auto;
+    gap: var(--space-sm);
+  }
+
+  .density__stats {
+    min-width: 90px;
+    font-size: 0.75rem;
+  }
+
+  .editor__controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE 400px
+   ============================================================ */
+@media (max-width: 400px) {
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  .card__number {
+    font-size: 2rem;
+  }
+}
