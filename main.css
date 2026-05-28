@@ -344,7 +344,7 @@ body {
 }
 
 /* ============================================================
-   LETTER DENSITY
+   LETTER DENSITY — barras de progreso CSS puras
    ============================================================ */
 .density {
   display: flex;
